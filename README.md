@@ -95,7 +95,7 @@ To run the project, execute the following command:
 
 To run tests, run the following command:
 
-- No test module available at the moment.
+  >> rspec spec
 
 ### Deployment
 
