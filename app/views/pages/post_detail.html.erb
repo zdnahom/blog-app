@@ -1,7 +1,9 @@
 <div class='post-detail'>
     <div class='post'>
-        <h3>Post #1 by username</h3>
-        <span>Comments:100, Likes:100</span>
+       <div class='post-header'>
+          <h3>Post #1 by username</h3>
+          <span class='comments-likes-info'>Comments:100, Likes:100</span>
+       </div>
         <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ultricies nunc quis justo consectetur, 
         vel malesuada mi sollicitudin. Sed aliquam lorem vitae libero consectetur, eget varius metus efficitur.
@@ -32,8 +34,14 @@
     padding: 2%;
     gap:10px
 }
+
 .post, .comments {
     border: 1px solid black;
     padding: 1%
+}
+.post-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 </style >
