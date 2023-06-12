@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
     def index
-        render 'home/index'
+        render 'pages/index'
     end
+
 end
