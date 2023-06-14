@@ -4,7 +4,7 @@ class PostsController < ApplicationController
     @author = User.find(params[:user_id])
   end
 
-  def show 
+  def show
     @post = Post.find(params[:id])
     @author = User.find(params[:user_id])
   end
