@@ -1,0 +1,74 @@
+<div class='posts-container'>
+     <div class='user-image-name-info'>
+        <div class='image-container'>
+            <img class='user-photo'src='' alt='profile pic'/>
+        </div>
+        <div class='user'>
+            <h3>User name : Nahom</h3>
+            <span class='number-of-posts'>Number of posts: 100</span>
+        </div>
+     </div>
+    <% (1..2).each do |post|%>
+        <div class='posts'>
+           <div class='post'>
+             <h3>Post #<%= post%></h3>
+             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ultricies nunc quis justo consectetur,
+                vel malesuada mi sollicitudin. </p>
+             <span class='comments-likes-info'>Comments:100, Likes:100</span>
+            </div>
+            <div class='comments'>
+              <% (1..5).each do |comment| %> 
+                    <p>Username: Comment <%= comment %></p>
+              <% end %>
+            </div>
+              
+        </div>
+    <% end %>
+    <button class='pagination-btn'>Pagination</button>
+</div>
+
+<style>
+.posts-container {
+    display: flex;
+    flex-direction: column; 
+    padding: 2%;
+    gap:10px
+}
+.user-image-name-info {
+    display:flex;
+    gap:2%
+}
+.image-container {
+    width: 30%;
+    height: 100px;
+    border: 1px solid black
+  }
+.user {
+    width: 40%;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1%;
+    flex-grow:1;
+
+}
+.number-of-posts {
+    align-self: end;
+}
+.post, .comments {
+    border: 1px solid black;
+    padding: 1%
+}
+.post {
+    display: flex;
+    flex-direction: column;
+}
+.comments-likes-info {
+    align-self: end;
+}
+.pagination-btn {
+    align-self: center;
+    font-size: 1.2rem
+}
+</style >
