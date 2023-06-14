@@ -1,24 +1,23 @@
 <div class='posts-container'>
      <div class='user-image-name-info'>
         <div class='image-container'>
-            <img class='user-photo'src='' alt='profile pic'/>
+            <img class='user-photo'src=<%= @author.photo%> alt='profile pic'/>
         </div>
         <div class='user'>
-            <h3>User name : Nahom</h3>
-            <span class='number-of-posts'>Number of posts: 100</span>
+            <h2><%= @author.name%><h2>
+            <p class='number-of-posts'>Number of posts: <%= @author.posts_counter%></p>
         </div>
      </div>
-    <% (1..2).each do |post|%>
+    <% @posts.each do |post|%>
         <div class='posts'>
            <div class='post'>
-             <h3>Post #<%= post%></h3>
-             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ultricies nunc quis justo consectetur,
-                vel malesuada mi sollicitudin. </p>
-             <span class='comments-likes-info'>Comments:100, Likes:100</span>
+             <h3>Post #<%= post.id%></h3>
+             <p><%= post.text%></p>
+             <span class='comments-likes-info'>Comments:<%= post.comments_counter%>, Likes:<%= post.likes_counter%></span>
             </div>
             <div class='comments'>
-              <% (1..5).each do |comment| %> 
-                    <p>Username: Comment <%= comment %></p>
+              <% post.recent_comments.each do |comment| %> 
+                    <p><%= comment.author.name%>: <%= comment.text %></p>
               <% end %>
             </div>
               
@@ -51,10 +50,10 @@
     justify-content: center;
     padding: 1%;
     flex-grow:1;
-
 }
 .number-of-posts {
-    align-self: end;
+    text-align: end;
+    font-size: 0.9rem
 }
 .post, .comments {
     border: 1px solid black;
