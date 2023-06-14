@@ -29,7 +29,7 @@ RSpec.describe 'Users', type: :request do
     it 'renders a correct template' do
       user = User.create! valid_attributes
       get user_url(user)
-      expect(response).to render_template('detail')
+      expect(response).to render_template('show')
     end
 
     it 'includes a placeholder' do
