@@ -4,25 +4,19 @@
             <img class='user-photo'src='' alt='profile pic'/>
         </div>
         <div class='user'>
-            <h3>User name : Nahom</h3>
-            <span class='number-of-posts'>Number of posts: 100</span>
+            <h3><%= @user.name%></h3>
+            <span class='number-of-posts'>Number of posts: <%= @user.posts_counter%></span>
         </div>
      </div>
     <div class='bio'>
       <h3>Bio</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ultricies nunc quis justo consectetur,
-       vel malesuada mi sollicitudin. Sed aliquam lorem vitae libero consectetur, eget varius metus efficitur.
-        Fusce nec dapibus arcu, eget rhoncus elit. Nulla eget mi lectus. Proin euismod efficitur quam, nec cursus lacus consectetur et.
-         Sed ac eros sed mauris tincidunt consectetur. Nullam euismod lobortis ante, at tristique est tristique nec. 
-         Curabitur ut luctus ipsum, a facilisis metus. Integer pellentesque malesuada ultrices. 
-        Donec quis leo vitae odio auctor maximus vitae ac purus.</p>
+      <p><%= @user.bio%></p>
     </div>
-    <% (1..3).each do |post|%>
+    <% @user.posts.each do |post|%>
         <div class='posts'>
            <div class='post'>
-             <h3>Post #<%= post%></h3>
-             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ultricies nunc quis justo consectetur,
-                vel malesuada mi sollicitudin. </p>
+             <h3>Post #<%= post.id%></h3>
+             <p><%= post.text%></p>
             </div>
         </div>
     <% end %>
