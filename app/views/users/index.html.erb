@@ -1,0 +1,46 @@
+<% @users.each do |user| %>
+    <div class='users'>
+        <div class='image-container'>
+          <img class='user-photo'src='' alt='profile pic'/>
+        </div>
+        <div class='user'>
+          <h3 class='user-name'><%= user.name %></h3>
+          <span class='number-of-posts'>Number of posts: <%= user.posts_counter %></span>
+        </div>
+    </div>
+<% end %>
+
+<style>
+.users {
+    display:flex;
+    gap:2%;
+    align-items: center;
+    padding: 1% 0
+}
+.image-container {
+  width: 200px;
+  height: 200px;
+  border: 1px solid black
+  }
+.user-photo {
+  width:
+}
+.user{
+  width: 100%;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2% 1%
+
+}
+.user-name {
+  padding:0;
+  margin:0;
+  font-size: 2.5rem;
+}
+.number-of-posts{
+  align-self: end;
+  font-size: 1.3rem;
+}
+</style >

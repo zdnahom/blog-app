@@ -1,24 +1,23 @@
 <div class='posts-container'>
      <div class='user-image-name-info'>
         <div class='image-container'>
-            <img class='user-photo'src='' alt='profile pic'/>
+            <img class='user-photo'src=<%= @author.photo%> alt='profile pic'/>
         </div>
         <div class='user'>
-            <h3>User name : Nahom</h3>
-            <span class='number-of-posts'>Number of posts: 100</span>
+            <h2 class='user-name'><%= @author.name%></h2>
+            <p class='number-of-posts'>Number of posts: <%= @author.posts_counter%></p>
         </div>
      </div>
-    <% (1..2).each do |post|%>
+    <% @posts.each do |post|%>
         <div class='posts'>
            <div class='post'>
-             <h3>Post #<%= post%></h3>
-             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ultricies nunc quis justo consectetur,
-                vel malesuada mi sollicitudin. </p>
-             <span class='comments-likes-info'>Comments:100, Likes:100</span>
+             <h3>Post #<%= post.id%></h3>
+             <p><%= post.text%></p>
+             <span class='comments-likes-info'>Comments:<%= post.comments_counter%>, Likes:<%= post.likes_counter%></span>
             </div>
             <div class='comments'>
-              <% (1..5).each do |comment| %> 
-                    <p>Username: Comment <%= comment %></p>
+              <% post.recent_comments.each do |comment| %> 
+                    <p><%= comment.author.name%>: <%= comment.text %></p>
               <% end %>
             </div>
               
@@ -36,25 +35,36 @@
 }
 .user-image-name-info {
     display:flex;
-    gap:2%
+    gap:2%;
+    align-items: center;
+    padding: 1% 0
 }
 .image-container {
-    width: 30%;
-    height: 100px;
+    width:200px;
+    height:200px;
     border: 1px solid black
   }
+.user-photo {
+    width:100%;
+}
 .user {
-    width: 40%;
+    width: 100%;
     border: 1px solid black;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 1%;
-    flex-grow:1;
-
+    padding: 2% 1%;
+}
+.user-name {
+    padding:0;
+    margin:0;
+    font-size: 2.5rem;
 }
 .number-of-posts {
-    align-self: end;
+    text-align: end;
+    font-size: 1.3rem;
+    padding:0;
+    margin:0;
 }
 .post, .comments {
     border: 1px solid black;

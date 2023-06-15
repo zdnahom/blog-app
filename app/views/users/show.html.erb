@@ -1,0 +1,72 @@
+<div class='user-detail'>
+     <div class='user-image-name-info'>
+        <div class='image-container'>
+            <img class='user-photo'src='' alt='profile pic'/>
+        </div>
+        <div class='user'>
+            <h2 class='user-name'><%= @user.name%></h2>
+            <span class='number-of-posts'>Number of posts: <%= @user.posts_counter%></span>
+        </div>
+     </div>
+    <div class='bio'>
+      <h3>Bio</h3>
+      <p><%= @user.bio%></p>
+    </div>
+    <% @user.posts.each do |post|%>
+        <div class='posts'>
+           <div class='post'>
+             <h3>Post #<%= post.id%></h3>
+             <p><%= post.text%></p>
+            </div>
+        </div>
+    <% end %>
+
+</div>
+
+<style>
+.user-detail {
+    display: flex;
+    flex-direction: column; 
+    padding: 2%;
+    gap:10px
+}
+.user-image-name-info {
+    display:flex;
+    gap:2%;
+    align-items: center;
+    padding: 1% 0
+}
+.image-container {
+    width: 200px;
+    height: 200px;
+    border: 1px solid black
+  }
+.user-photo {
+    width:100%;
+}
+.user{
+    width: 100%;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2% 1%;
+
+}
+.user-name {
+    padding:0;
+    margin:0;
+    font-size: 2.5rem;
+}
+
+.number-of-posts{
+    align-self: end;
+    font-size: 1.3rem;
+    padding:0;
+    margin:0;
+}
+.bio,.post{
+    border: 1px solid black;
+    padding: 1%
+}
+</style >

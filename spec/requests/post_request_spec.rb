@@ -11,7 +11,7 @@ RSpec.describe 'Posts', type: :request do
 
     it 'renders a correct template' do
       get user_posts_url(user)
-      expect(response).to render_template('posts')
+      expect(response).to render_template('index')
     end
 
     it 'includes a placeholder' do
@@ -30,7 +30,7 @@ RSpec.describe 'Posts', type: :request do
     it 'renders a correct template' do
       post = Post.create! valid_attributes
       get user_post_url(user, post)
-      expect(response).to render_template('post_detail')
+      expect(response).to render_template('show')
     end
 
     it 'includes a placeholder' do

@@ -1,0 +1,39 @@
+<div class='post-detail'>
+    <div class='post'>
+       <div class='post-header-container'>
+          <h3 class='post-header-text'>Post #<%= @post.id%> by <%= @author.name%></h3>
+          <span class='comments-likes-info'>Comments:<%= @post.comments_counter%>, Likes:<%= @post.likes_counter%></span>
+       </div>
+        <p><%= @post.text%></p>
+    </div>
+    <div class='comments'>
+        <% @post.comments.each do |comment| %> 
+            <p><%= comment.author.name%>: <%= comment.text %></p>
+        <% end %>
+    </div>
+</div>
+
+<style>
+.post-detail {
+    display: flex;
+    flex-direction: column; 
+    padding: 2%;
+    gap:10px
+}
+
+.post, .comments {
+    border: 1px solid black;
+    padding: 1%
+}
+.post-header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.post-header-text {
+    font-size: 2.5rem;
+}
+.comments-likes-info {
+    font-size: 1.3rem;
+}
+</style >
