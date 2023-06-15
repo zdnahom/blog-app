@@ -1,3 +1,9 @@
+<% if flash[:notice] %>
+  <div class="notice">
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+
 <div class='post-detail'>
     <div class='post'>
        <div class='post-header-container'>
@@ -11,9 +17,13 @@
             <p><%= comment.author.name%>: <%= comment.text %></p>
         <% end %>
     </div>
+    <%= link_to 'Add a comment', new_user_post_comment_path(@author.id,@post.id) %>
 </div>
 
 <style>
+.notice {
+    color: green;
+}
 .post-detail {
     display: flex;
     flex-direction: column; 
