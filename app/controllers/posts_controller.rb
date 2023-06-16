@@ -9,7 +9,9 @@ class PostsController < ApplicationController
     @author = User.find(params[:user_id])
   end
 
-  def new; end
+  def new
+    @post = Post.new
+  end
 
   def create
     title = params[:title]

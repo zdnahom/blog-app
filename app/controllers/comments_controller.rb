@@ -1,5 +1,7 @@
 class CommentsController < ApplicationController
-  def new; end
+  def new
+    @comments = Comment.new
+  end
 
   def create
     text = params[:text]
