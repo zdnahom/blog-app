@@ -18,6 +18,7 @@
         <% end %>
     </div>
     <%= link_to 'Add a comment', new_user_post_comment_path(@author.id,@post.id) %>
+    <%= render '/likes/form'%>
 </div>
 
 <style>
