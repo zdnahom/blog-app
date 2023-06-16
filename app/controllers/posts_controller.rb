@@ -14,8 +14,8 @@ class PostsController < ApplicationController
   end
 
   def create
-    title = params[:title]
-    text = params[:text]
+    title = params[:post][:title]
+    text = params[:post][:text]
     post = Post.new(author: current_user, title:, text:)
 
     if post.save
