@@ -11,16 +11,16 @@ class PostsController < ApplicationController
 
   def new; end
 
-  def create 
+  def create
     title = params[:title]
     text = params[:text]
-    post = Post.new(author:current_user, title:title, text:text)
-  
+    post = Post.new(author: current_user, title:, text:)
+
     if post.save
       post.update_posts_counter
-      redirect_to user_posts_path, notice: "Post created successfully!!"
+      redirect_to user_posts_path, notice: 'Post created successfully!!'
     else
-      flash.now[:alert] = "Unable to create a post"
+      flash.now[:alert] = 'Unable to create a post'
       render :new
     end
   end
