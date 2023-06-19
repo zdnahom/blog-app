@@ -4,6 +4,7 @@
   </div>
 <% end %>
 
+
 <div class='posts-container'>
      <div class='user-image-name-info'>
         <div class='image-container'>
@@ -16,6 +17,7 @@
      </div>
      <%= link_to 'Add a post', new_user_post_path %>
     <% @posts.each do |post|%>
+    <%= link_to user_post_path(@author,post) do%>
         <div class='posts'>
            <div class='post'>
              <h3>Post #<%= post.id%></h3>
@@ -27,8 +29,8 @@
                     <p><%= comment.author.name%>: <%= comment.text %></p>
               <% end %>
             </div>
-              
         </div>
+        <% end %>
     <% end %>
     <button class='pagination-btn'>Pagination</button>
 </div>

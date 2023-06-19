@@ -13,13 +13,15 @@
       <p><%= @user.bio%></p>
     </div>
     <% @user.posts.each do |post|%>
-        <div class='posts'>
-           <div class='post'>
-             <h3>Post #<%= post.id%></h3>
-             <p><%= post.text%></p>
+            <div class='posts'>
+            <div class='post'>
+                <h3>Post #<%= post.id%></h3>
+                <p><%= post.text%></p>
+                </div>
             </div>
-        </div>
     <% end %>
+
+    <%= link_to 'See all posts', user_posts_path(@user) %>
 
 </div>
 
