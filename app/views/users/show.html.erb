@@ -12,15 +12,16 @@
       <h3>Bio</h3>
       <p><%= @user.bio%></p>
     </div>
-    <% @user.posts.each do |post|%>
-            <div class='posts'>
-            <div class='post'>
-                <h3>Post #<%= post.id%></h3>
-                <p><%= post.text%></p>
-                </div>
-            </div>
-    <% end %>
-
+        <div class='posts'>
+            <% @user.recent_posts.each do |post|%>
+                <%= link_to user_post_path(@user,post) do%>
+                    <div class='post'>
+                        <h3>Post #<%= post.id%></h3>
+                        <p><%= post.text%></p>
+                    </div>
+                <% end %>
+            <% end %>
+        </div>
     <%= link_to 'See all posts', user_posts_path(@user) %>
 
 </div>
