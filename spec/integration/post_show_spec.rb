@@ -12,7 +12,6 @@ RSpec.describe 'Post show page', type: :system do
                   { author: users[2], title: 'Third Post', text: 'My Third post' }])
   end
 
-
   describe 'Post show' do
     it 'shows the title of a post' do
       visit user_post_path(users[0], posts[0])
