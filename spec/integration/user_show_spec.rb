@@ -2,16 +2,16 @@ require 'rails_helper'
 
 RSpec.describe 'User show page', type: :system do
   let!(:users) do
-   User.create([{name: 'Lilly', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'Teacher from Poland.'},
-    {name: 'Tom', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'Teacher from England.'},
-    {name: 'Nahom', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'Teacher from Ethiopia.'}])
-   end
+    User.create([{ name: 'Lilly', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'Teacher from Poland.' },
+                 { name: 'Tom', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'Teacher from England.' },
+                 { name: 'Nahom', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'Teacher from Ethiopia.' }])
+  end
   let!(:posts) do
     Post.create!([{ author: users[0], title: 'First Post', text: 'My first post' },
                   { author: users[1], title: 'Second Post', text: 'My Second post' },
                   { author: users[2], title: 'Third Post', text: 'My Third post' }])
   end
-describe 'User show' do
+  describe 'User show' do
     it 'shows user profile picture' do
       visit user_path(users[0])
       expect(page).to have_css('img[alt="profile pic"]')

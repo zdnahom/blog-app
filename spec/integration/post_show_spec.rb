@@ -1,19 +1,19 @@
 require 'rails_helper'
 
 RSpec.describe 'Post show page', type: :system do
-    let!(:users) do
-      User.create([{name: 'Lilly', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'Teacher from Poland.'},
-       {name: 'Tom', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'Teacher from England.'},
-       {name: 'Nahom', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'Teacher from Ethiopia.'}])
-      end
-     let!(:posts) do
-       Post.create!([{ author: users[0], title: 'First Post', text: 'My first post' },
-                     { author: users[1], title: 'Second Post', text: 'My Second post' },
-                     { author: users[2], title: 'Third Post', text: 'My Third post' }])
-     end
-  
+  let!(:users) do
+    User.create([{ name: 'Lilly', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'Teacher from Poland.' },
+                 { name: 'Tom', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'Teacher from England.' },
+                 { name: 'Nahom', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'Teacher from Ethiopia.' }])
+  end
+  let!(:posts) do
+    Post.create!([{ author: users[0], title: 'First Post', text: 'My first post' },
+                  { author: users[1], title: 'Second Post', text: 'My Second post' },
+                  { author: users[2], title: 'Third Post', text: 'My Third post' }])
+  end
 
-describe 'Post show' do
+
+  describe 'Post show' do
     it 'shows the title of a post' do
       visit user_post_path(users[0], posts[0])
       expect(page).to have_content(posts[0].title)

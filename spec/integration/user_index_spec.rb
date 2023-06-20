@@ -2,10 +2,10 @@ require 'rails_helper'
 
 RSpec.describe 'User index page', type: :system do
   let!(:users) do
-    User.create([{name: 'Lilly', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'Teacher from Poland.'},
-     {name: 'Tom', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'Teacher from England.'},
-     {name: 'Nahom', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'Teacher from Ethiopia.'}])
-    end
+    User.create([{ name: 'Lilly', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'Teacher from Poland.' },
+                 { name: 'Tom', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'Teacher from England.' },
+                 { name: 'Nahom', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'Teacher from Ethiopia.' }])
+  end
   let!(:posts) do
     Post.create!([{ author: users[0], title: 'First Post', text: 'My first post' },
                   { author: users[1], title: 'Second Post', text: 'My Second post' },
