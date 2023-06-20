@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe 'User index page', type: :system do
   let!(:users) do
     User.create([{ name: 'Lilly', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'Teacher from Poland.' },
-                 { name: 'Tom', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'Teacher from England.' },
+                 { name: 'Tom', photo: 'https://unsplash.com/photos/F_-0BxGuVvo.', bio: 'Teacher from England.' },
                  { name: 'Nahom', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'Teacher from Ethiopia.' }])
   end
   let!(:posts) do
@@ -20,14 +20,18 @@ RSpec.describe 'User index page', type: :system do
       end
     end
 
-    it 'shows users picture' do
+    it 'shows the profile picture for each user' do
       visit users_path
-      expect(page).to have_css('img[alt="profile pic"]')
+      users.each do |user|
+        expect(page).to have_css("img[src*='#{user.photo}']")
+      end
     end
 
-    it 'shows how many posts a user has written' do
+    it 'shows how many posts each user has written' do
       visit users_path
-      expect(page).to have_content(users[0].posts_counter)
+      users.each do |user|
+        expect(page).to have_content(user.posts_counter)
+      end
     end
 
     it 'user clicks on user name and goes to user page' do
