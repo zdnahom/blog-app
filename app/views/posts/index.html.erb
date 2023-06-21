@@ -15,7 +15,9 @@
             <p class='number-of-posts'>Number of posts: <%= @author.posts_counter%></p>
         </div>
      </div>
-     <%= link_to 'Add a post', new_user_post_path %>
+     <% if current_user === @author %>
+       <%= link_to 'Add a post', new_user_post_path %>
+     <%end%>
     <% @posts.each do |post|%>
     <%= link_to user_post_path(@author,post) do%>
         <div class='posts'>
