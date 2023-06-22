@@ -4,6 +4,7 @@ class PostsController < ApplicationController
   def index
     @author = User.find(params[:user_id])
     @posts = @author.posts.includes(:comments)
+    @post = Post.new
   end
 
   def show
@@ -29,7 +30,7 @@ class PostsController < ApplicationController
   def destroy
     post = Post.find(params[:id])
     post.destroy
-    redirect_to user_posts_path(current_user)
+    redirect_to user_posts_path(params[:user_id])
   end
 
   private
