@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  load_and_authorize_resource
+
   def index
     @author = User.find(params[:user_id])
     @posts = @author.posts.includes(:comments)
@@ -14,16 +16,25 @@ class PostsController < ApplicationController
   end
 
   def create
-    title = params[:post][:title]
-    text = params[:post][:text]
-    post = Post.new(author: current_user, title:, text:)
+    post = current_user.posts.new(post_params)
 
     if post.save
-      post.update_posts_counter
       redirect_to user_posts_path, notice: 'Post created successfully!!'
     else
       flash.now[:alert] = 'Unable to create a post'
       render :new
     end
+  end
+
+  def destroy
+    post = Post.find(params[:id])
+    post.destroy
+    redirect_to user_posts_path(current_user)
+  end
+
+  private
+
+  def post_params
+    params.require(:post).permit(:title, :text)
   end
 end
