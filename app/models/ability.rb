@@ -10,9 +10,9 @@ class Ability
       can :read, :all
       return unless user.present?
       can :destroy, Post, author_id: user.id
-      can :create, Post, author_id: user.id
+      can :create, Post
       return unless user.admin?
-      can :manage, :all
+      can :destroy, :all
     #
     # The first argument to `can` is the action you are giving the user
     # permission to do.
