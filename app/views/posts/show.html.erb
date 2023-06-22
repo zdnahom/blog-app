@@ -19,6 +19,9 @@
     </div>
     <%= link_to 'Add a comment', new_user_post_comment_path(@author.id,@post.id) %>
     <%= render '/likes/form'%>
+    <% if can? :destroy, @post %>
+        <%= button_to 'Delete post', user_post_path(@author, @post), method: :delete%>
+    <% end %>
 </div>
 
 <style>
