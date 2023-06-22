@@ -11,6 +11,7 @@ class Ability
       return unless user.present?
       can :destroy, Post, author_id: user.id
       can :create, Post
+      can :destroy, Comment, author_id: user.id
       return unless user.admin?
       can :destroy, :all
     #
