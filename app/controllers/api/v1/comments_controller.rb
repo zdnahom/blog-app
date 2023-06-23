@@ -1,11 +1,11 @@
 class Api::V1::CommentsController < ApplicationController
-    skip_before_action :verify_authenticity_token
-    def index
-        @comments = Post.find(params[:post_id]).comments.all
-        render json: @comments
-    end
+  skip_before_action :verify_authenticity_token
+  def index
+    @comments = Post.find(params[:post_id]).comments.all
+    render json: @comments
+  end
 
-    def create
+  def create
     post = Post.find(params[:post_id])
     user = User.find_by(auth_key: request.headers['Auth-Key'])
 
@@ -27,5 +27,4 @@ class Api::V1::CommentsController < ApplicationController
   def comment_params
     params.require(:comment).permit(:text)
   end
-
 end

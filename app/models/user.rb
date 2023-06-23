@@ -8,7 +8,7 @@ class User < ApplicationRecord
   has_many :comments, foreign_key: :author_id
 
   before_create :generate_auth_key
-  
+
   validates :name, presence: true
   validates :posts_counter, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
@@ -17,10 +17,11 @@ class User < ApplicationRecord
   end
 
   def generate_auth_key
-  begin
-    self.auth_key = Devise.friendly_token
-  end while self.class.exists?(auth_key: auth_key)
-end
+    loop do
+      self.auth_key = Devise.friendly_token
+      break unless self.class.exists?(auth_key:)
+    end
+  end
 
   def admin?
     role == 'admin'
