@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-  # devise_for :users
+  devise_for :users
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
       resources :users, only: [:index, :show] do
@@ -11,7 +11,7 @@ Rails.application.routes.draw do
       end
     end
   end
-  
+
   root "users#index"
   resources :users, only: [:index, :show] do
     resources :posts, only: [:index, :show, :new, :create, :destroy] do 
